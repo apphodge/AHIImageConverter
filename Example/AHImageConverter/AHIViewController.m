@@ -20,10 +20,6 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    /*
-     NSString *path = [NSHomeDirectory() stringByAppendingPathComponent:
-     [NSString stringWithFormat:@"Documents/movie.mp4"]];
-
     NSArray * testImageArray = @[ [UIImage imageNamed:@"frame1.JPG"],
                                   [UIImage imageNamed:@"frame2.JPG"],
                                   [UIImage imageNamed:@"frame3.JPG"],
@@ -36,10 +32,6 @@
                                   [UIImage imageNamed:@"frame10.JPG"],
                                   [UIImage imageNamed:@"frame11.JPG"]];
     
-    [[NSFileManager defaultManager] removeItemAtPath:path error:NULL];
-    
-    
-    
     
     [AHIImagesToVideo saveVideoToPhotosWithImages:testImageArray
                               animateTransitions:YES
@@ -50,9 +42,7 @@
                                        NSLog(@"Failed");
                                    }
                                }];
-     [[NSFileManager defaultManager] removeItemAtPath:path error:NULL];
 
-    */
     NSArray * testImageArray2 = @[ [UIImage imageNamed:@"frame1.png"],
                                   [UIImage imageNamed:@"frame2.png"],
                                   [UIImage imageNamed:@"frame3.png"],

@@ -164,6 +164,13 @@ BOOL const DefaultTransitionShouldAnimate = YES;
        animateTransitions:(BOOL)shouldAnimateTransitions
         withCallbackBlock:(SuccessBlock)callbackBlock
 {
+    // set the width to be a multiple of 16 to fix Apple bug
+    int width = size.width;
+    width = width / 16;
+    width = width * 16;
+    float factor = (float) width / (float) size.width; // to make sure height is scaled accordingly
+    size = CGSizeMake(width, (int) (factor * size.height));
+    
     NSLog(@"%@", path);
     NSError *error = nil;
     AVAssetWriter *videoWriter = [[AVAssetWriter alloc] initWithURL:[NSURL fileURLWithPath:path]
@@ -210,7 +217,7 @@ BOOL const DefaultTransitionShouldAnimate = YES;
             if (i >= [array count]) {
                 buffer = NULL;
             } else {
-                buffer = [AHIImagesToVideo pixelBufferFromCGImage:[array[i] CGImage] size:CGSizeMake(480, 320)];
+                buffer = [AHIImagesToVideo pixelBufferFromCGImage:[array[i] CGImage] size:size];
             }
             
             if (buffer) {
