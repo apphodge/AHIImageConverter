@@ -33,6 +33,6 @@ Pod::Spec.new do |s|
   }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
-  s.frameworks = 'CoreVideo', 'AVFoundation', 'CoreFoundation', 'CoreMedia', 'AssetsLibrary', 'MobileCoreServices', 'ImageIO', 'UIKit'
+  s.frameworks = 'AssetsLibrary','CoreVideo', 'AVFoundation', 'CoreFoundation', 'CoreMedia', 'AssetsLibrary', 'MobileCoreServices', 'ImageIO', 'UIKit'
   # s.dependency 'AFNetworking', '~> 2.3'
 end

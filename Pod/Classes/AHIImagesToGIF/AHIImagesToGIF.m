@@ -102,14 +102,34 @@ BOOL const AHIGIFDefaultTransitionShouldAnimate = YES;
     
     [AHIImagesToGIF gifFromImages:images toPath:tempPath withSize:size withFPS:fps animateTransitions:animate withCallbackBlock:^(BOOL success) {
         if (success) {
-            UIImage * gif_image = [UIImage imageWithContentsOfFile:tempPath];
-            UIImageWriteToSavedPhotosAlbum(gif_image, self, nil, nil);
-            //[[NSFileManager defaultManager] removeItemAtPath:tempPath error:NULL];
+            ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
+            
+            NSData *data = [NSData dataWithContentsOfFile:tempPath];
+            
+            [library writeImageDataToSavedPhotosAlbum:data metadata:nil completionBlock:^(NSURL *assetURL, NSError *error) {
+                if (error) {
+                    NSLog(@"Error Saving GIF to Photo Album: %@", error);
+                    if (callbackBlock) {
+                        callbackBlock(FALSE);
+                    }
+
+                } else {
+                    // TODO: success handling
+                    NSLog(@"GIF Saved to %@", assetURL);
+                    if (callbackBlock) {
+                        callbackBlock(TRUE);
+                    }
+
+                }
+            }];
+            
+        } else {
+            if (callbackBlock) {
+                callbackBlock(success);
+            }
+
         }
         
-        if (callbackBlock) {
-            callbackBlock(success);
-        }
     }];
     
     

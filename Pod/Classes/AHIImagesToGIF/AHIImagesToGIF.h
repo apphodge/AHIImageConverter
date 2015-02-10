@@ -10,7 +10,7 @@
 #import <UIKit/UIKit.h>
 #import <ImageIO/ImageIO.h>
 #import <MobileCoreServices/MobileCoreServices.h>
-
+#import <AssetsLibrary/AssetsLibrary.h>
 
 /**
  *  Determines defaults for transitions
